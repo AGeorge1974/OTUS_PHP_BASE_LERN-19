@@ -1,0 +1,31 @@
+<header>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-9">
+                <h1>Галлерея картинок.</h1>
+            </div>
+            <div class="col-2">
+                <div class="headerLogin">
+                    <?php
+                        if (isset($_SESSION['userName']) && $_SESSION['userName'] !== null) {
+                            echo "<p>" . $_SESSION['userName'] . "</p>";
+                        } else {
+                            echo "<p>Не определен пользователь</p>";
+                        }
+                    ?>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="headerLogin">
+                    <?php
+                        if (isset($_SESSION['userName']) && $_SESSION['userName'] !== null) {
+                            echo '<a href="logOut.php" style = "text-decoration:none;" >Login Out</a>';
+                        } else {
+                            echo '<a href="logIn.php" style = "text-decoration:none;" >Login In</a>';
+                        }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
