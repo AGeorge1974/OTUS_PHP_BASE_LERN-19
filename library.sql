@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 19 2022 г., 01:08
+-- Время создания: Апр 24 2022 г., 12:01
 -- Версия сервера: 8.0.24
 -- Версия PHP: 8.0.8
 
@@ -68,6 +68,27 @@ INSERT INTO `books` (`IdBook`, `Name`, `ISBN`, `Year`, `Pages`, `IdPublisher`, `
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `photos`
+--
+
+CREATE TABLE `photos` (
+  `IdPhotos` int NOT NULL,
+  `IdUser` int NOT NULL,
+  `nameFiles` varchar(50) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `photos`
+--
+
+INSERT INTO `photos` (`IdPhotos`, `IdUser`, `nameFiles`, `date`) VALUES
+(1, 15, 'Download.png', '2022-04-24 00:00:00'),
+(2, 14, 's-valentinka0026.png', '2022-04-24 12:00:13');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `publisher`
 --
 
@@ -124,7 +145,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`idUser`, `name`, `password`, `token`) VALUES
 (12, '111', '698d51a19d8a121ce581499d7b701668', '625ddf12bf617'),
-(13, '222', 'bcbe3365e6ac95ea2c0343a2395834dd', '625de0c1e7eb8');
+(13, '222', 'bcbe3365e6ac95ea2c0343a2395834dd', '625de0c1e7eb8'),
+(14, 'Юрий', '202cb962ac59075b964b07152d234b70', '62617248e76dd'),
+(15, 'Антушев', '202cb962ac59075b964b07152d234b70', '62650e38edfdd');
 
 --
 -- Индексы сохранённых таблиц
@@ -142,6 +165,12 @@ ALTER TABLE `authors`
 ALTER TABLE `books`
   ADD PRIMARY KEY (`IdBook`),
   ADD UNIQUE KEY `pages` (`Pages`) USING BTREE;
+
+--
+-- Индексы таблицы `photos`
+--
+ALTER TABLE `photos`
+  ADD PRIMARY KEY (`IdPhotos`);
 
 --
 -- Индексы таблицы `publisher`
@@ -174,6 +203,12 @@ ALTER TABLE `books`
   MODIFY `IdBook` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT для таблицы `photos`
+--
+ALTER TABLE `photos`
+  MODIFY `IdPhotos` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT для таблицы `relbookauthor`
 --
 ALTER TABLE `relbookauthor`
@@ -183,7 +218,7 @@ ALTER TABLE `relbookauthor`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `idUser` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idUser` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

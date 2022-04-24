@@ -98,11 +98,11 @@
         return $query->fetchAll()[0]['idUser'];
     }
     
-    function addPhoto($idUser, $files, $copies)
+    function addPhoto($idUser, $nameFiles)
     {
         $pdo = db_connect();
-        $result = $pdo->prepare('insert into photos(idUser, files, copies, date) values (?,?,?,?)');
-        $result->execute([$idUser, $files, $copies, date('Y-m-d')]);
+        $query = $pdo->prepare('insert into photos(idUser, nameFiles, date) values (?,?,?)');
+        $query->execute([$idUser, $nameFiles, date('Y-m-d H:i:s')]);
     }        
 
 ?>

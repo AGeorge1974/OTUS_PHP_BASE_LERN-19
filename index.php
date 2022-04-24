@@ -43,6 +43,7 @@
           }
           move_uploaded_file($_FILES["photo"]['tmp_name'], $dir . "$newName" . "." . $ext);
           image_resize($dir . "$newName" . "." . $ext, $dirMini . "$newName" . "." . $ext, 100,100,100);
+          addPhoto($_SESSION['userId'], $name);
           header("location: /");
       };
     };
